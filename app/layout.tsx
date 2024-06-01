@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Provider from "./state/provide";
 import { ThemeProvider } from "@/components/ui/theme-provider";
-
+import { Toaster, toast } from 'sonner'
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -26,7 +26,9 @@ export default function RootLayout({
             enableSystem={true}
             disableTransitionOnChange
           >
-            <div className="dark">{children}</div>
+            <div className="dark">
+            <Toaster richColors  theme="dark" position="bottom-right"/> 
+              {children}</div>
           </ThemeProvider>
         </Provider>
       </body>

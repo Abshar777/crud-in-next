@@ -1,4 +1,5 @@
 "use client"
+
 import Image from "next/image"
 import Link from "next/link"
 
@@ -6,9 +7,18 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import img from "@/public/1717149669840.jpg"
-import {useState} from "react"
+import {useState,FormEvent} from "react"
+import { toast } from "sonner"
  function Login() {
      const [email,setEmail]=useState<string>("")
+     const [password,setPass]=useState<string>("")
+     const handleSubmit=()=>{
+      toast.error('validaition error',{
+        description: 'please filll the all field',
+      })
+     }
+     
+
   return (
     <div className="w-full h-lvh overflow-hidden  lg:grid  lg:grid-cols-2 ">
       <div className="flex h-lvh md:h-lvh items-center justify-center py-12">
@@ -27,6 +37,8 @@ import {useState} from "react"
                 type="email"
                 placeholder="m@example.com"
                 required
+                value={email}
+                onChange={e=>setEmail(e.target.value)}
               />
             </div>
             <div className="grid gap-2">
@@ -34,7 +46,7 @@ import {useState} from "react"
                 <Label htmlFor="password">Password</Label>
                
               </div>
-              <Input id="password" type="password" required />
+              <Input value={password} onChange={e=>setPass(e.target.value)} id="password" type="password" required />
               <Link
                   href="/forgot-password"
                   className="ml-auto inline-block text-sm underline"
@@ -42,7 +54,7 @@ import {useState} from "react"
                   Forgot your password?
                 </Link>
             </div>
-            <Button type="submit" className="w-full   transition-all ease-in duration-[.5] ">
+            <Button onClick={handleSubmit} type="submit" className="w-full   transition-all ease-in duration-[.5] ">
               Login
             </Button>
             <Button variant="outline" className=" transition-all ease-in duration-[.5]  w-full">
