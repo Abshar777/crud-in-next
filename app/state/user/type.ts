@@ -1,15 +1,20 @@
-import { PayloadAction } from '@reduxjs/toolkit';
 export interface user{
-    _id:string;
-    firstname:string;
-    lastname:string;
-    email:string;
-    password:string
+    _id?:string;
+    firstname?:string;
+    lastname?:string;
+    email?:string;
+    password?:string;
+    logined?:boolean;
 }
-type fn=(state:user,{payload}:{payload:{}})=>void
+export interface fnResponse{
+    success:boolean;
+    msg:string 
+}
+
+export type fn<T>=(state:user,{payload}:{payload:T})=>void
 export type reducer={
-    addUser:fn,
-    updateUser:fn,
-    blockUser:fn,
-    loginUser:fn
+    addUser:fn<user>,
+    updateUser:fn<user>,
+    blockUser:fn<void>,
+   
 }

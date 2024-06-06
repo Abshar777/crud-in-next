@@ -1,24 +1,25 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { user ,reducer} from "./type";
+import {signUp} from "./fn"
 
 const initialState:user={
     _id:"",
-    firstname:"mhd",
-    lastname:"abshar",
-    email:'a@gmail.com',
-    password:"12467ahagha"
+    firstname:"",
+    lastname:"",
+    email:'',
+    password:"",
+    logined:false,
 }
 
 const userSlice=createSlice({
     name:'user',
     initialState,
     reducers:{
-        addUser:(state,{payload})=>{},
+        addUser:signUp,
         updateUser:(state,{payload})=>{},
         blockUser:(state,{payload})=>{},
-        loginUser:(state,{payload})=>{}
     }as reducer
 })
 
 export default userSlice.reducer
-export const {addUser,updateUser,blockUser,loginUser} =userSlice.actions
+export const {addUser,updateUser,blockUser} =userSlice.actions
