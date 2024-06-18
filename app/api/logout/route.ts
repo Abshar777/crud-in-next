@@ -4,6 +4,6 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function DELETE(req: NextRequest) {
     const res = NextResponse.json({ success: true, message: "Successfully logged out" }, { status: 200 });
-    res.cookies.unset("OutSiteJwt", { path: '/' });
+    res.cookies.delete("OutSiteJwt");
     return res;
 }
